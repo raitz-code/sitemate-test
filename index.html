@@ -1,0 +1,58 @@
+<html>
+<header>
+    <!-- In real world I'd compile these .css into a single file. -->
+    <link rel="stylesheet" href="css/main.css"></link>
+    <link rel="stylesheet" href="css/confirm-modal.css"/>
+    
+</header>
+<body>
+    <button type="button" id="test-button-1" class="confirm-modal-button"
+            data-message="Are you sure you want to continue?">
+            Click me
+    </button>
+    <button type="button" id="test-button-2" class="confirm-modal-button"
+            data-message="Press 'Yes' to print to console, press 'Cancel' to show alert.">
+            Click me too!
+    </button>
+    <button type="button" id="test-button-3" class="confirm-modal-button">
+            Optional Message
+    </button>
+    <div id="test-message"></div>
+
+    <!-- In real world I'd have these in an external .js. -->
+    <script src="js/confirm-modal.js"></script>
+    <script>
+        const b1 = document.getElementById('test-button-1');
+        const b2 = document.getElementById('test-button-2');
+        const b3 = document.getElementById('test-button-3');
+
+        const c1 = new ConfirmModalButton({
+            buttonElm: b1,
+            confirmCallback: () => {
+                document.getElementById('test-message').innerText = "You just clicked \"Yes\".";
+            },
+            cancelCallback: () => {
+                document.getElementById('test-message').innerText = "You just clicked \"Cancel\".";
+            },
+        });
+        const c2 = new ConfirmModalButton({
+            buttonElm: b2,
+            confirmCallback: () => {
+                console.log("Confirmed!");
+            },
+            cancelCallback: () => {
+                alert('Canceled!');
+            },
+        });
+        const c3 = new ConfirmModalButton({
+            buttonElm: b3,
+            message: "Message from JavaScript.",
+        })
+        
+        c1.initialize();
+        c2.initialize();
+        c3.initialize();
+        
+    </script>
+</body>
+</html>
