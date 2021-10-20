@@ -18,7 +18,7 @@ class ConfirmModalButton {
         this.modalElm = this.#initializeModal();
 
         this.buttonElm.addEventListener('click', (e) => {
-            this.modalElm.classList.remove('hidden');
+            this.#showModal();
         })
     }
 
