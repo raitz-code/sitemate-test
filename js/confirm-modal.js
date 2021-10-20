@@ -22,6 +22,8 @@ class ConfirmModalButton {
         })
     }
 
+    // In real world I might use some framework that supports HTML template,
+    // instead of creating tags with JavaScript.
     #initializeModal() {
         const modalElm = document.createElement('div');
         modalElm.classList.add('confirm-modal-container');
